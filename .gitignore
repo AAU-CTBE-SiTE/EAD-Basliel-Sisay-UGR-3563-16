@@ -1,0 +1,15 @@
+# Environment variables
+.env
+*.env
+
+# Maven build outputs
+target/
+*.class
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project/
+.classpath/

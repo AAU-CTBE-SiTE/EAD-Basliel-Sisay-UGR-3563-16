@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.craft.Address">
+        <property name="city" value="Addis Ababa"/><property name="country" value="Ethiopia"/>
+    </bean>
+    <bean id="math" class="com.craft.Subject"><property name="name" value="Mathematics"/></bean>
+    <bean id="spring" class="com.craft.Subject"><property name="name" value="Spring Core"/></bean>
+    <bean id="subjects" class="java.util.ArrayList"><constructor-arg><list><ref bean="math"/><ref bean="spring"/></list></constructor-arg></bean>
+    <bean id="setterStudent" class="com.craft.Student">
+        <property name="id" value="101"/><property name="name" value="Aster"/><property name="address" ref="address"/><property name="subjects" ref="subjects"/>
+    </bean>
+    <bean id="constructorStudent" class="com.craft.Student">
+        <constructor-arg index="0" value="102"/><constructor-arg index="1" value="Mekdes"/><constructor-arg index="2" ref="address"/><constructor-arg index="3" ref="subjects"/>
+    </bean>
+    <bean id="singletonStudent" class="com.craft.Student" scope="singleton"><property name="id" value="103"/><property name="name" value="Singleton"/></bean>
+    <bean id="prototypeStudent" class="com.craft.Student" scope="prototype"><property name="id" value="104"/><property name="name" value="Prototype"/></bean>
+</beans>

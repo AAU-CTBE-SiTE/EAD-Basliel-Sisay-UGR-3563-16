@@ -1,1 +1,24 @@
 https://chatgpt.com/c/6afe91c5-d4c4-83ea-8c2d-b2f8155dfbb5
+
+ChatGPT Lab Summary
+
+I used ChatGPT to help me build this student management API with Spring Boot for Lab 8. Here is a summary of the guidance and steps I followed.
+
+Architecture and Setup
+I set up a Spring Boot project with Spring Web, Spring Data JPA, and Lombok. The advice was to split the code into four clear parts: model, repository, service, and controller.
+
+Model Layer
+In the Student model class, I used the Entity annotation to connect it to the database table. I set up an auto generated primary key with Id and GeneratedValue. I also added Lombok annotations for getters, setters, and constructors so I did not have to write all that repetitive code by hand.
+
+Repository Layer
+For the database layer, I created StudentRepository extending JpaRepository. This gave me ready to use CRUD methods like save, findAll, findById, and deleteById without needing to write any manual database queries.
+
+Service Layer
+In StudentService, I put the business logic and injected the repository through constructor injection. It handles fetching all students, getting a single student, creating a student, updating an existing student, and deleting a student.
+
+Controller Layer
+In StudentController, I created REST endpoints using RestController. I mapped POST students to create, GET students to fetch all records, GET students by id to fetch one record, PUT students by id to update, and DELETE students by id to remove a record.
+
+Troubleshooting Notes
+1. Lombok was not creating getters and setters at first, which caused IDE errors. The fix was turning on annotation processing in IntelliJ settings and rebuilding.
+2. During PUT updates, a new row was being created instead of updating. The fix was setting the student id before calling save so JPA knows to update the existing row.
